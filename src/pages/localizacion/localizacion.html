@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>{{'Localización' | translate}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding scrollbar-y-auto>
+  <ion-card>
+    <ion-card-header>
+      {{'Cambiar localización:' | translate}}
+    </ion-card-header>
+    <ion-card-content>
+      <button ion-button light (click)="ElegirArgentina()">{{'ARGENTINA' | translate}}</button>
+      <button ion-button light (click)="ElegirUSA()">{{'USA' | translate}}</button>
+      <button ion-button light (click)="ElegirItalia()">{{'ITALIA' | translate}}</button>
+      <button ion-button light (click)="ElegirBrasil()">{{'BRASIL' | translate}}</button>
+      <button ion-button light (click)="loadMap()">{{'prueba' | translate}}</button>
+      
+    </ion-card-content>
+  </ion-card>
+  <div #map id="map" style="height:100%;"></div>
+</ion-content>

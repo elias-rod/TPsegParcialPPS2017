@@ -148,9 +148,15 @@
   "Ingresar":"Depósito",
   "Idioma":"Idioma",
   "Cambio de idioma":"Alterar o idioma",
-  "Elija su idioma":"Escolha o seu idioma",
+  "Elija su idioma:":"Escolha o seu idioma",
   "ESPAÑOL":"ESPANHOL",
   "INGLES":"ENGLISH",
   "ITALIANO":"ITALIANO",
-  "PORTUGUES":"PORTUGUÊS"
+  "PORTUGUES":"PORTUGUÊS",
+  "Localización":"Local",
+  "Cambiar localización:":"Alterar local",
+  "ARGENTINA":"ARGENTINA",
+  "USA":"EUA",
+  "ITALIA":"ITALIA",
+  "BRASIL":"BRASIL"
 }

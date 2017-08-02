@@ -33,12 +33,22 @@ import { AsistenciaAdministrativo } from '../pages/asistenciaAdministrativo/asis
 import { AsistenciaProfesor } from '../pages/asistenciaProfesor/asistenciaProfesor';
 import { AsistenciaAlumno } from '../pages/asistenciaAlumno/asistenciaAlumno';
 import { Idioma } from '../pages/idioma/idioma';
+import { Localizacion } from '../pages/localizacion/localizacion';
 
 import { PersonasService } from './personas.service';
 import { AuthService } from './auth-service';
 
 import { PersonasPage } from '../pages/personas/personas';
 import { Archivos } from '../pages/archivos/archivos';
+import {
+ GoogleMaps,
+ GoogleMap,
+ GoogleMapsEvent,
+ LatLng,
+ CameraPosition,
+ MarkerOptions,
+ Marker
+} from '@ionic-native/google-maps';
 
 //PARA FIREBASE
 import { AngularFireModule } from 'angularfire2';
@@ -75,6 +85,7 @@ export function createTranslateLoader(http: Http) {
     AsistenciaAlumno,
     Archivos,
     Idioma,
+    Localizacion,
 
     //Encuesta y graficos
     Encuesta ,
@@ -118,7 +129,8 @@ export function createTranslateLoader(http: Http) {
     Encuesta,
     Graficos,
     Archivos,
-    Idioma
+    Idioma,
+    Localizacion
   ],
   providers: [
     PersonasService,
@@ -128,7 +140,7 @@ export function createTranslateLoader(http: Http) {
     BarcodeScanner,
     AuthService,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-  AngularFireDatabaseModule,
+    AngularFireDatabaseModule,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     Vibration,
     NativeAudio,
@@ -136,7 +148,8 @@ export function createTranslateLoader(http: Http) {
     Device,
     ServEncuesta,
     File,
-    GooglePlus
+    GooglePlus,
+    GoogleMaps
   ]
 })
 export class AppModule {}

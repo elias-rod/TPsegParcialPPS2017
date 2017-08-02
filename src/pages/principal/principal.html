@@ -53,6 +53,11 @@
           <div>{{'Idioma' | translate}}</div>        
         <ion-icon item-end name="ios-arrow-forward"></ion-icon>
       </button>
+      <button icon-left ion-item (click)="irLocalizacion()">
+        <ion-icon item-start name="globe"  style="color:#0e6073;"></ion-icon>
+          <div>{{'Localización' | translate}}</div>        
+        <ion-icon item-end name="ios-arrow-forward"></ion-icon>
+      </button>
       <button *ngIf="asistencias"  icon-left ion-item (click)="irAsistencia()">
         <ion-icon item-start name="ios-list-box"  style="color:#0e6073;"></ion-icon>
           <div>{{'Asistencia' | translate}}</div>        

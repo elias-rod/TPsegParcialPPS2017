@@ -148,9 +148,15 @@
   "Ingresar":"Login",
   "Idioma":"Language",
   "Cambio de idioma":"Change of language",
-  "Elija su idioma":"Choose your language",
+  "Elija su idioma:":"Choose your language",
   "ESPAÑOL":"SPANISH",
   "INGLES":"ENGLISH",
   "ITALIANO":"ITALIAN",
-  "PORTUGUES":"PORTUGUESE"
+  "PORTUGUES":"PORTUGUESE",
+  "Localización":"Location",
+  "Cambiar localización:":"Change Location",
+  "ARGENTINA":"ARGENTINA",
+  "USA":"USA",
+  "ITALIA":"ITALY",
+  "BRASIL":"BRAZIL"
 }

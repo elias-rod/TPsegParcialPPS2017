@@ -8,6 +8,7 @@ import { AboutPage } from '../about/about';
 import { LoginPage } from '../login/login';
 import { Archivos } from '../archivos/archivos';
 import { Idioma } from '../idioma/idioma';
+import { Localizacion } from '../localizacion/localizacion';
 import { PersonasamPage } from '../personasam/personasam';
 import { Encuesta } from '../encuesta/encuesta';
 import { Graficos } from '../graficos/graficos';
@@ -119,6 +120,9 @@ export class PrincipalPage {
   }
   irIdioma(){
     this.navCtrl.push(Idioma);
+  }
+  irLocalizacion(){
+    this.navCtrl.push(Localizacion);
   }
   irAsistencia(){
     this.navCtrl.push(AsistenciaAdministrativo);
