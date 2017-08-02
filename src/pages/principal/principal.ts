@@ -7,6 +7,7 @@ import { PersonasPage } from '../personas/personas';
 import { AboutPage } from '../about/about';
 import { LoginPage } from '../login/login';
 import { Archivos } from '../archivos/archivos';
+import { Idioma } from '../idioma/idioma';
 import { PersonasamPage } from '../personasam/personasam';
 import { Encuesta } from '../encuesta/encuesta';
 import { Graficos } from '../graficos/graficos';
@@ -115,6 +116,9 @@ export class PrincipalPage {
   };
   irArchivos(){
     this.navCtrl.push(Archivos);
+  }
+  irIdioma(){
+    this.navCtrl.push(Idioma);
   }
   irAsistencia(){
     this.navCtrl.push(AsistenciaAdministrativo);

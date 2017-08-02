@@ -1,6 +1,6 @@
 <ion-header>
   <ion-navbar color="primary">
-    <ion-title>Registro</ion-title>
+    <ion-title>{{'Registro' | translate}}</ion-title>
   </ion-navbar>
 </ion-header>
 
@@ -10,29 +10,29 @@
 
     <ion-card-content >
       <ion-card-title class="textoCentrado">
-        Registro
+        {{'Registro' | translate}}
       </ion-card-title>
 	  
 
         <form [formGroup]="formLogin">
     <ion-list inset>
       <!--AVISO DE ERROR SI LA VARIABLE errorEnFormulario ESTÁ SETEADA EN TRUE-->
-      <p *ngIf="errorFormLogin" style="color: #ea6153;">El nombre es obligatorio y debe contener solo letras hasta un máximo de 30.</p>
+      <p *ngIf="errorFormLogin" style="color: #ea6153;">{{'El nombre es obligatorio y debe contener solo letras hasta un máximo de 30.' | translate}}</p>
       <ion-item>
 
-        <ion-label floating>Nombre</ion-label>
+        <ion-label floating>{{'Nombre' | translate}}</ion-label>
         <ion-input  [(ngModel)]="miUsuario.email" type="text" formControlName="nombre" ></ion-input>
       </ion-item>
       <ion-item>
 
-        <ion-label floating>Password</ion-label>
+        <ion-label floating>{{'Password' | translate}}</ion-label>
         <ion-input  [(ngModel)]="miUsuario.password" type="password" formControlName="password" ></ion-input>
       </ion-item>
       <ion-item >
         <ion-row>
           <ion-col class="textoCentrado">
            
-           <p><button ion-button class="btnsize" (click)="Register(miUsuario)"><ion-icon name="ios-person"></ion-icon>Registrarse</button></p>
+           <p><button ion-button class="btnsize" (click)="Register(miUsuario)"><ion-icon name="ios-person"></ion-icon>{{'Registrarse' | translate}}</button></p>
                             <!-- <button ion-button  medium   icon-left (click)="insertar(miUsuario)">insertar</button>-->
 
           </ion-col>

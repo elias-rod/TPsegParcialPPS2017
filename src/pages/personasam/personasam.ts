@@ -247,7 +247,13 @@ export class PersonasamPage {
       this.PersonaService.VerificarLegajo(this.legajo).then(
         data => {
           if (data['_body'] != "false") {
-            this.ErrorEnUso('Legajo', this.legajo);
+            this.translate.get(['Legajo'])
+            .subscribe(
+              translatedText => {
+                this.ErrorEnUso(translatedText['Legajo'], this.legajo);
+              }
+            );
+
             this.legajo = 0;
           }
         })
@@ -328,19 +334,22 @@ export class PersonasamPage {
   }
 
   delete() {
-    let alert = this.alertCtrl.create({
-      title: 'Eliminar',
-      message: '¿Desea eliminar el usuario?',
+    this.translate.get(['Eliminar','¿Desea eliminar el usuario?','Si','No','Borrado', 'Cancelar'])
+    .subscribe(
+      translatedText => {
+let alert = this.alertCtrl.create({
+      title: translatedText['Eliminar'],
+      message: translatedText['¿Desea eliminar el usuario?'],
       buttons: [
         {
-          text: 'No',
-          role: 'cancel',
+          text: translatedText['No'],
+          role: translatedText['Cancelar'],
           handler: () => {
 
           }
         },
         {
-          text: 'Si',
+          text: translatedText['Si'],
           handler: () => {
             this.PersonaService.BorrarPersona(this.id, this.rolasignado).then(
               data => {
@@ -349,7 +358,7 @@ export class PersonasamPage {
                   this.ErrorAlBorrar();
                 } else {
                   this.navCtrl.setRoot(PersonasPage);
-                  this.toastOk('Borrado');
+                  this.toastOk(translatedText['Borrado']);
                 }
               })
               .catch(error => {
@@ -360,30 +369,36 @@ export class PersonasamPage {
       ]
     });
     alert.present();
+      }
+    );
+    
   }
 
   presentActionSheet() {
+    this.translate.get(['¿Qué desea realizar?','Eliminar','Modificar','Cancelar','Acceso denegado'])
+    .subscribe(
+      translatedText => {
     if (this.rol != '3') {
       let actionSheet = this.actionSheetCtrl.create({
-        title: '¿Qué desea realizar?',
+        title: translatedText['¿Qué desea realizar?'],
         buttons: [
           {
-            text: 'Eliminar',
-            role: 'eliminar',
+            text: translatedText['Eliminar'],
+            role: translatedText['Eliminar'],
             icon: !this.platform.is('ios') ? 'trash' : null,
             handler: () => {
               this.delete();
             }
           }, {
-            text: 'Modificar',
+            text: translatedText['Modificar'],
             icon: !this.platform.is('ios') ? 'md-create' : null,
             handler: () => {
               this.create();
             }
           }, {
-            text: 'Cancelar',
+            text: translatedText['Cancelar'],
             icon: !this.platform.is('ios') ? 'close' : null,
-            role: 'cancelar',
+            role: translatedText['Cancelar'],
             handler: () => {
 
             }
@@ -393,33 +408,39 @@ export class PersonasamPage {
       actionSheet.present();
     }else{
       let toast = this.toastCtrl.create({
-        message: ' Acceso denegado',
+        message: translatedText['Acceso denegado'],
       position: 'middle',
       duration: 1000
     });
     toast.present();
     }
+      }
+    );
+
   }
 
-   tomarFoto() {    
+  tomarFoto() {
+    this.translate.get(['¿Cómo desea tomar la foto?','Camara','Archivo','Cancelar'])
+    .subscribe(
+      translatedText => {
       let actionSheet = this.actionSheetCtrl.create({
-        title: '¿Cómo desea tomar la foto?',
+        title: translatedText['¿Cómo desea tomar la foto?'],
         buttons: [
           {
-            text: 'Camara',
-            role: 'Camara',
+            text: translatedText['Camara'],
+            role: translatedText['Camara'],
             icon: !this.platform.is('ios') ? 'md-camera' : null,
             handler: () => {
               this.imagen(1);
             }
           }, {
-            text: 'Archivo',
+            text: translatedText['Archivo'],
             icon: !this.platform.is('ios') ? 'md-image' : null,
             handler: () => {
               this.imagen(0);
             }
           }, {
-            text: 'Cancelar',
+            text: translatedText['Cancelar'],
             icon: !this.platform.is('ios') ? 'close' : null,
             role: 'cancelar',
             handler: () => {
@@ -429,7 +450,8 @@ export class PersonasamPage {
         ]
       });
       actionSheet.present();
-     
+      }
+    );     
   }
 
   imagen(x) {

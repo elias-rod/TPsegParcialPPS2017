@@ -32,6 +32,7 @@ import { PrincipalPage } from '../pages/principal/principal';
 import { AsistenciaAdministrativo } from '../pages/asistenciaAdministrativo/asistenciaAdministrativo';
 import { AsistenciaProfesor } from '../pages/asistenciaProfesor/asistenciaProfesor';
 import { AsistenciaAlumno } from '../pages/asistenciaAlumno/asistenciaAlumno';
+import { Idioma } from '../pages/idioma/idioma';
 
 import { PersonasService } from './personas.service';
 import { AuthService } from './auth-service';
@@ -73,6 +74,7 @@ export function createTranslateLoader(http: Http) {
     AsistenciaProfesor,
     AsistenciaAlumno,
     Archivos,
+    Idioma,
 
     //Encuesta y graficos
     Encuesta ,
@@ -115,7 +117,8 @@ export function createTranslateLoader(http: Http) {
     AsistenciaAlumno,
     Encuesta,
     Graficos,
-    Archivos
+    Archivos,
+    Idioma
   ],
   providers: [
     PersonasService,

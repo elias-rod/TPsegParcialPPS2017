@@ -13,6 +13,7 @@ import { AngularFireAuth } from "angularfire2/auth";
 import { FirebaseListObservable, AngularFireDatabase } from 'angularfire2/database';
 import * as EmailValidator from "email-validator";
 
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'page-registro',
@@ -33,7 +34,8 @@ export class RegistroPage {
   miUsuario = {} as usuario;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private auth: AuthService, private loadingCtrl: LoadingController,
-    public formBuilder: FormBuilder, private alertCtrl: AlertController, private toast: ToastController, private AngularAuth: AngularFireAuth, public database: AngularFireDatabase) {
+    public formBuilder: FormBuilder, private alertCtrl: AlertController, private toast: ToastController, private AngularAuth: AngularFireAuth, public database: AngularFireDatabase,
+  public translate: TranslateService) {
 
 
     this.user = this.database.list('/usuarios');
@@ -51,8 +53,11 @@ export class RegistroPage {
 
 
   Register(miUsuario: usuario) {
-
-    try {
+    this.translate.get(['Usuario ',' fue creado Satisfactoriamente',"por favor, intente nuevamente","error registro",
+  "contraseña o user incorrecto","recuerde que debe ser un mail valido y una contraseña de al menos 6 caracteres"])
+    .subscribe(
+      translatedText => {
+try {
       if (miUsuario.password.length >= 6 && EmailValidator.validate(miUsuario.email)) {
        const result = this.AngularAuth.auth.createUserWithEmailAndPassword(miUsuario.email, miUsuario.password);
  
@@ -64,18 +69,18 @@ export class RegistroPage {
           });  // asi se hace un insert en firebase*/
           
           this.toast.create({
-            message: 'Usuario ' + miUsuario.email + ' fue creado Satisfactoriamente',
+            message: translatedText['Usuario '] + miUsuario.email + translatedText[' fue creado Satisfactoriamente'],
             duration: 3000
           }).present();
 
           this.navCtrl.push(LoginPage);
         }
         else
-          this.showError("error registro", "por favor, intente nuevamente");
+          this.showError(translatedText["error registro"], translatedText["por favor, intente nuevamente"]);
       }
       else {
         console.log("error");
-        this.showError("contraseña o user incorrecto", "recuerde que debe ser un mail valido y una contraseña de al menos 6 caracteres");
+        this.showError(translatedText["contraseña o user incorrecto"], translatedText["recuerde que debe ser un mail valido y una contraseña de al menos 6 caracteres"]);
 
       }
 
@@ -84,7 +89,8 @@ export class RegistroPage {
     catch (e) {
       console.error(e);
     }
-
+      }
+    );
   };
 
   showError(titulo, texto) {
