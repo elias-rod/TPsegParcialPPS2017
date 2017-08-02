@@ -9,13 +9,11 @@
     <ion-card-header>
       {{'Cambiar localización:' | translate}}
     </ion-card-header>
-    <ion-card-content>
-      <button ion-button light (click)="ElegirArgentina()">{{'ARGENTINA' | translate}}</button>
-      <button ion-button light (click)="ElegirUSA()">{{'USA' | translate}}</button>
-      <button ion-button light (click)="ElegirItalia()">{{'ITALIA' | translate}}</button>
-      <button ion-button light (click)="ElegirBrasil()">{{'BRASIL' | translate}}</button>
-      <button ion-button light (click)="loadMap()">{{'prueba' | translate}}</button>
-      
+    <ion-card-content *ngIf="mostrar">
+      <button ion-button light (click)="ubicarPosicion(-34.599722, -58.381944)">{{'ARGENTINA' | translate}}</button>
+      <button ion-button light (click)="ubicarPosicion(38.895, -77.036667)">{{'USA' | translate}}</button>
+      <button ion-button light (click)="ubicarPosicion(41.893056, 12.482778)">{{'ITALIA' | translate}}</button>
+      <button ion-button light (click)="ubicarPosicion(-15.793889, -47.882778)">{{'BRASIL' | translate}}</button>
     </ion-card-content>
   </ion-card>
   <div #map id="map" style="height:100%;"></div>

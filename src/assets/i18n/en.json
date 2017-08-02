@@ -9,7 +9,7 @@
   "Alumno":"Student",
   "Profesor":"Teacher",
   "Administrativo":"Administrative",
-  "Registro":"Sign in",
+  "Registro":"Sign up",
   "Login":"Login",
   "Cargando...":"Loading...",
   "Error":"Error",
