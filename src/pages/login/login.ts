@@ -46,7 +46,7 @@ export class LoginPage {
       }
     );
     this.local.ready().then(() => {
-    this.local.set('userInfo', '');    
+    this.local.set('userInfo', '');
   });
     
     this.user = this.database.list('/agenda');

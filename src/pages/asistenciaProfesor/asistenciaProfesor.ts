@@ -19,6 +19,7 @@ export class AsistenciaProfesor {
   offset = new Date().getTimezoneOffset() * 60000; //TRANSFORMACIÓN DEL OFFSET EN MILISEGUNDOS
   fecha = new Date(Date.now() - this.offset).toISOString().substring(0, 10);
   fechaPartes : any;
+  formatoFecha : string = "";
 
   diaElegido : number;
   materiaElegidaNombre = "";
@@ -46,14 +47,17 @@ export class AsistenciaProfesor {
       this.asistencia = [];
       this.nativeAudio.preloadSimple('error', 'assets/sounds/error.mp3');
       this.nativeAudio.preloadSimple('yay', 'assets/sounds/yay.wav');
-    translate.get('Cargando...')
-    .subscribe(
-      translatedText => {
-        this.spinner = this.loadingCtrl.create({
-          content: translatedText
-        });
-      }
-    );
+      translate.get('Cargando...')
+      .subscribe(
+        translatedText => {
+          this.spinner = this.loadingCtrl.create({
+            content: translatedText
+          });
+        }
+      );
+      storage.get('formato').then((val) => {
+        this.formatoFecha = val || "DD/MM/YYYY";
+      });
       this.spinner.present();
       this.storage.get('userInfo').then((val) => {
         this.userId = val.idUsuario;

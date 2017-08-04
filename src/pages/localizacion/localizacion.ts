@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { NavController, ToastController, LoadingController } from 'ionic-angular';
+import { NavController, ToastController, LoadingController, AlertController } from 'ionic-angular';
 import { NativeAudio } from '@ionic-native/native-audio';
 import { Vibration } from '@ionic-native/vibration';
-
+import { Storage } from '@ionic/storage';
 import { TranslateService } from '@ngx-translate/core';
 
 import {
@@ -15,6 +15,8 @@ import {
  Marker
 } from '@ionic-native/google-maps';
 
+import { Globalization } from '@ionic-native/globalization';
+
 @Component({
   selector: 'page-localizacion',
   templateUrl: 'localizacion.html'
@@ -26,14 +28,20 @@ export class Localizacion {
   mostrar;
   spinner;
   map : GoogleMap;
+  fecha;
+  fechaLarga;
+  region;
 
   constructor(public navCtrl: NavController,
   public toastCtrl: ToastController,
   private nativeAudio: NativeAudio,
   public loadingCtrl: LoadingController,
   private vibration: Vibration,
+  public alertCtrl: AlertController,
   public translate: TranslateService,
-  private googleMaps: GoogleMaps) {
+  private googleMaps: GoogleMaps,
+  private storage: Storage,
+  private globalization: Globalization) {
     this.nativeAudio.preloadSimple('yay', 'assets/sounds/yay.wav');
     this.nativeAudio.preloadSimple('error', 'assets/sounds/error.mp3');
     this.mostrar = false;
@@ -44,6 +52,21 @@ export class Localizacion {
         });
       }
     );
+
+    this.globalization.dateToString(new Date(),{ formatLength: 'short', selector: 'date and time' })
+    .then((date)=>{
+      this.fecha = date.value;
+    });
+
+    this.globalization.dateToString(new Date(),{ formatLength: 'long', selector: 'date and time' })
+    .then((date)=>{
+      this.fechaLarga = date.value;
+    });
+
+    this.globalization.getPreferredLanguage()
+    .then(reg => {
+      this.region = reg.value;
+    });
   }
 
   DesecharYCrearSpinner(){
@@ -68,7 +91,7 @@ export class Localizacion {
     });
   }
 
-  ubicarPosicion(lat, lng){
+  ubicarPosicion(lat, lng, formato){
     let latLng = new LatLng(lat, lng);
     this.map.clear();
     let position: CameraPosition = {
@@ -86,6 +109,60 @@ export class Localizacion {
     .then((marker: Marker) => {
       marker.showInfoWindow();
       this.DesecharYCrearSpinner();
+      this.vibration.vibrate(500);
+      this.nativeAudio.play('yay');
+      this.translate.get(['Formato regional cambiado'])
+      .subscribe(
+        translatedText => {
+          let toast = this.toastCtrl.create({
+          message: translatedText['Formato regional cambiado'],
+          duration: 3000
+        });
+      toast.present();
     });
+
+    this.storage.set('formato', formato);
+
+    /*
+    let pais : string;
+
+    setTimeout(() => {
+      this.translate.get(['Cambio de geolocalización','NO','OK',"Argentina","USA","Italia","Brasil","¿Desea cambiar los formatos regionales a "])
+      .subscribe(
+        translatedText => {
+          switch (idioma) {
+            case 'es':
+              pais = translatedText["Argentina"];
+              break;
+            case 'en':
+              pais = translatedText["USA"];
+              break;
+            case 'it':
+              pais = translatedText["Italia"];
+              break;
+            case 'po':
+              pais = translatedText["Brasil"];
+              break;
+            default:
+              break;
+          }
+          
+          let alert = this.alertCtrl.create();
+          alert.setTitle(translatedText['Cambio de geolocalización']);
+          alert.setMessage(translatedText['¿Desea cambiar los formatos regionales a '] + pais + "?");
+          alert.addButton(translatedText['NO']);
+          alert.addButton({
+            text: translatedText['OK'],
+            handler: alumnoElegidoId => {
+              this.translate.setDefaultLang(idioma);
+              this.vibration.vibrate(100);
+              this.nativeAudio.play('yay');
+            }
+          });
+          alert.present();
+        }
+      );
+    }, 500);
+    */
   }
 }

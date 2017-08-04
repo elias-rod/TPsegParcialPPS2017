@@ -65,7 +65,22 @@ $ npm install --save @ionic-native/barcode-scanner
 * Momento: Cuando la administrativa quiere seleccionar un aula.
 * Razón: Para que ahorrarle trabajo a la administrativa y permitirle una forma alternativa de seleccionar el aula.
 
+--------------------------------------------------------------------------------------------
+
+TRANSLATE
+
+* Momento: En toda la aplicación.
+* Razón: Para adecuar la aplicación al lenguaje del usuario.
+
 ----------------------------------------------
+
+GOOGLEMAP
+
+* Momento: Al ingresar al submenu de localización.
+* Razón: Para mostrar de forma visual el cambio de formato regional.
+
+----------------------------------------------
+
 
 OTROS
 

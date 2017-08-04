@@ -158,5 +158,11 @@
   "ARGENTINA":"ARGENTINA",
   "USA":"USA",
   "ITALIA":"ITALY",
-  "BRASIL":"BRAZIL"
+  "BRASIL":"BRAZIL",
+  "Cambio de geolocalización":"Geolocation change",
+  "OK":"OK",
+  "Argentina":"Argentina",
+  "Italia":"Italy",
+  "Brasil":"Brazil",
+  "Formato regional cambiado":"Changed regional format"
 }

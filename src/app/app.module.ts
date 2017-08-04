@@ -14,6 +14,7 @@ import { NativeAudio } from '@ionic-native/native-audio';
 import { DeviceMotion } from '@ionic-native/device-motion';
 import { Device } from '@ionic-native/device';
 import { File } from '@ionic-native/file';
+import { Globalization } from '@ionic-native/globalization';
 
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
@@ -149,7 +150,8 @@ export function createTranslateLoader(http: Http) {
     ServEncuesta,
     File,
     GooglePlus,
-    GoogleMaps
+    GoogleMaps,
+    Globalization
   ]
 })
 export class AppModule {}

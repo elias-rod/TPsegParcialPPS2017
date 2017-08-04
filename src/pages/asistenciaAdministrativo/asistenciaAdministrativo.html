@@ -6,7 +6,9 @@
   <ion-toolbar no-border-top color="primary">
     <button ion-button icon-left color="secondary">
       <ion-icon name="calendar"></ion-icon>{{'Cambiar fecha' | translate}}
-      <ion-datetime displayFormat="DD/MM/YYYY" cancelText="CANCELAR" doneText="OK" [(ngModel)]="fecha" (ionChange)="ActualizarDia()"></ion-datetime>
+      <div *ngIf="formatoFecha">
+        <ion-datetime displayFormat={{formatoFecha}} cancelText="CANCELAR" doneText="OK" [(ngModel)]="fecha" (ionChange)="ActualizarDia()"></ion-datetime>
+      </div>
     </button>
     
     <ion-segment color="light" [(ngModel)]="filtro">

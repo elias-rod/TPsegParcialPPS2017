@@ -20,6 +20,7 @@ export class AsistenciaAdministrativo {
   offset = new Date().getTimezoneOffset() * 60000; //TRANSFORMACIÓN DEL OFFSET EN MILISEGUNDOS
   fecha = new Date(Date.now() - this.offset).toISOString().substring(0, 10);
   fechaPartes : any;
+  formatoFecha : string = "";
 
   filtro = "";
   diaElegido : number;
@@ -61,6 +62,9 @@ export class AsistenciaAdministrativo {
           });
         }
       );
+      storage.get('formato').then((val) => {
+        this.formatoFecha = val || "DD/MM/YYYY";
+      });
       this.storage.get('userInfo').then((val) => {
         this.userId = val.idUsuario;
         this.GuardarDispositivo();
