@@ -88,3 +88,7 @@ npm install email-validator
 npm install firebase angularfire2 --save
 
 ----------------------------------------------
+
+
+IONIC VIEW
+* 0ead0d31

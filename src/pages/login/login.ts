@@ -36,7 +36,6 @@ export class LoginPage {
   public formBuilder: FormBuilder, private alertCtrl: AlertController, private PersonaService : PersonasService,
   private local: Storage, private AngularAuth: AngularFireAuth, public database: AngularFireDatabase,
   public translate: TranslateService) {
-    translate.setDefaultLang('en');
     translate.get('Cargando...')
     .subscribe(
       translatedText => {

@@ -34,6 +34,7 @@ import { AsistenciaAdministrativo } from '../pages/asistenciaAdministrativo/asis
 import { AsistenciaProfesor } from '../pages/asistenciaProfesor/asistenciaProfesor';
 import { AsistenciaAlumno } from '../pages/asistenciaAlumno/asistenciaAlumno';
 import { Idioma } from '../pages/idioma/idioma';
+import { Readme } from '../pages/readme/readme';
 import { Localizacion } from '../pages/localizacion/localizacion';
 
 import { PersonasService } from './personas.service';
@@ -89,8 +90,9 @@ export function createTranslateLoader(http: Http) {
     Localizacion,
 
     //Encuesta y graficos
-    Encuesta ,
-    Graficos
+    Encuesta,
+    Graficos,
+    Readme
   ],
   imports: [
     BrowserModule,
@@ -131,7 +133,8 @@ export function createTranslateLoader(http: Http) {
     Graficos,
     Archivos,
     Idioma,
-    Localizacion
+    Localizacion,
+    Readme
   ],
   providers: [
     PersonasService,

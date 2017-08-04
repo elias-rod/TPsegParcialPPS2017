@@ -118,51 +118,10 @@ export class Localizacion {
           message: translatedText['Formato regional cambiado'],
           duration: 3000
         });
-      toast.present();
+        toast.present();
+      });
     });
 
     this.storage.set('formato', formato);
-
-    /*
-    let pais : string;
-
-    setTimeout(() => {
-      this.translate.get(['Cambio de geolocalización','NO','OK',"Argentina","USA","Italia","Brasil","¿Desea cambiar los formatos regionales a "])
-      .subscribe(
-        translatedText => {
-          switch (idioma) {
-            case 'es':
-              pais = translatedText["Argentina"];
-              break;
-            case 'en':
-              pais = translatedText["USA"];
-              break;
-            case 'it':
-              pais = translatedText["Italia"];
-              break;
-            case 'po':
-              pais = translatedText["Brasil"];
-              break;
-            default:
-              break;
-          }
-          
-          let alert = this.alertCtrl.create();
-          alert.setTitle(translatedText['Cambio de geolocalización']);
-          alert.setMessage(translatedText['¿Desea cambiar los formatos regionales a '] + pais + "?");
-          alert.addButton(translatedText['NO']);
-          alert.addButton({
-            text: translatedText['OK'],
-            handler: alumnoElegidoId => {
-              this.translate.setDefaultLang(idioma);
-              this.vibration.vibrate(100);
-              this.nativeAudio.play('yay');
-            }
-          });
-          alert.present();
-        }
-      );
-    }, 500);
-    */
   }
 }

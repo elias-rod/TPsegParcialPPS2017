@@ -6,6 +6,7 @@ import { Storage } from '@ionic/storage';//STORAGE FOR IONIC
 import { PersonasPage } from '../personas/personas';
 import { AboutPage } from '../about/about';
 import { LoginPage } from '../login/login';
+import { Readme } from '../readme/readme';
 import { Archivos } from '../archivos/archivos';
 import { Idioma } from '../idioma/idioma';
 import { Localizacion } from '../localizacion/localizacion';
@@ -132,7 +133,10 @@ export class PrincipalPage {
   }
   irAsistenciaP(){
     this.navCtrl.push(AsistenciaProfesor);
-  }    
+  }
+  irReadme(){
+    this.navCtrl.push(Readme);
+  }
   materias(){
     this.navCtrl.setRoot(MateriasPrincipal);
   }
