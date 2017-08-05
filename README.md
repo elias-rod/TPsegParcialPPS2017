@@ -91,4 +91,5 @@ npm install firebase angularfire2 --save
 
 
 IONIC VIEW
-* 0ead0d31
+* ASISTENCIA 0ead0d31
+* TESTAPP 8db9605a
